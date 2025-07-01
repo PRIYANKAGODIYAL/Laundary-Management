@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - Laundry Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #003057;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #28778b;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .logout-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 25px;
+      background-color: #d9534f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .logout-btn:hover {
+      background-color: #c9302c;
+    }
+
+    .no-data {
+      text-align: center;
+      font-style: italic;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Laundry Orders Dashboard</h2>
+
+  <table id="ordersTable">
+    <thead>
+      <tr>
+        <th>Customer Email</th>
+        <th>Pickup Date</th>
+        <th>Time Slot</th>
+        <th>Type of Clothes</th>
+        <th>Male Clothes</th>
+        <th>Female Clothes</th>
+        <th>Services</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="7" class="no-data">Loading orders...</td></tr>
+    </tbody>
+  </table>
+
+  <button class="logout-btn" onclick="logout()">Logout</button>
+
+  <script>
+    fetch('http://localhost:3000/admin/orders')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#ordersTable tbody');
+        tableBody.innerHTML = '';
+
+        if (!data || data.length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="7" class="no-data">No orders found.</td></tr>`;
+          return;
+        }
+
+        data.forEach(order => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${order.customer_email || '—'}</td>
+            <td>${order.pickup_date ? new Date(order.pickup_date).toLocaleDateString() : '—'}</td>
+            <td>${order.time_slot || '—'}</td>
+            <td>${order.type_of_clothes || '—'}</td>
+            <td>${order.male_clothes || '0'}</td>
+            <td>${order.female_clothes || '0'}</td>
+            <td>${order.services || '—'}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching orders:', error);
+        const tableBody = document.querySelector('#ordersTable tbody');
+        tableBody.innerHTML = `<tr><td colspan="7" class="no-data">Failed to load orders. Please try again later.</td></tr>`;
+      });
+
+    function logout() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

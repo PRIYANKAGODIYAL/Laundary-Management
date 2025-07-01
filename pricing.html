@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+   <title>Pricing</title>
+   <link rel="stylesheet">
+   <script src="https://kit.fontawesome.com/3e7876803c.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+          }
+
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        nav {
+            background-color: #003057;
+            display: flex;
+            padding: 0% 2%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav img {
+            width: 70px;
+            position: relative;
+            margin-left: 2px;
+            margin-top: 2px;
+            margin-bottom: 1px;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 4px 6px;
+            position: relative;
+        }
+
+        .nav-links ul li a {
+            font-size: 20px;
+            color: #fcfcff;
+            text-decoration: none;
+        }
+
+        .nav-links ul li::after {
+            content: "";
+            width: 4%;
+            height: 5px;
+            background: #f3ac5b;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        #pricing {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        #pricing h1{
+             text-align: center;
+             font-size: 36px;
+             color: #003057;
+        }
+
+        .pricing-col {
+            background-color: #003057;
+            border: 3px solid #ad8888;
+            padding: 20px;
+            margin: 20px;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(101, 110, 240, 0.1);
+        }
+        .pricing-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+        .pricing-col h3 {
+            color: #eb830e;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        @media screen and (max-width: 600px) {
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-links li:first-child {
+                margin-bottom: 10px;
+            }
+            .nav-links i {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+
+  .heading {
+    color: #003057;
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .step-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+    margin-left: 280px;
+    margin-bottom: 60px;
+    margin-top: 40px;
+  }
+
+  .step {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #cef0f0;
+    flex: 2;
+    margin: 0 20px; /* Added margin for spacing */
+  }
+
+  .step img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .step p {
+    font-size: 16px;
+    color: #555;
+  }
+
+  .step h2 {
+    color: #003057;
+  }
+
+        /*----footer-------*/
+        .footer {
+  width: 100%;
+  padding: 0px;
+  min-height: 10vh;
+  background-color: #003057;
+  background-position: center;
+  background-size: cover;
+}
+
+.footer p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  padding: 10px;
+  text-align: center;
+}
+
+.footer h5 {
+  margin-bottom: 1px;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+  text-align: left;
+  display: inline-flex;
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+.icons .fas{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.fa-phone{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.fa-envelope{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+  position: relative;
+  top: -7px;
+}
+
+.fa-map-marker-alt{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+  top: -7px;
+}
+    </style>          
+</head>
+           
+<body>
+      <section class="header">
+        <nav>
+            <img src="./Images/logo2.png">
+            <div class="nav-links" id="navLinks">
+           <!-- <i class="fa fa-times" onclick="hiddenMenu()" ></i> -->
+
+        <ul>
+            <li><a href="Index.html">HOME</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="pricing.html">PRICING</a></li>
+            <li><a href="booknow.html">BOOK NOW</a></li>                
+        </ul>
+        </div>
+       <!-- <i class="fa fa-bars" onclick="showMenu()"></i> -->
+
+        </nav>
+
+        <section id="pricing">
+            <h1>Pricing</h1>
+            <div class="row">
+            <div class="pricing-col">
+            <h4>Wash & Fold</h4><br>
+            <h3>40Rs per piece(Male)</h3>
+            <h3>50Rs per piece(Female)</h3><br>
+            </div>
+
+             <div class="pricing-col">
+            <h4>Wash & Iron</h4><br>
+            <h3>50Rs per piece(Male)</h3>
+            <h3>50Rs per piece(Female)</h3><br>
+            </div>
+
+            <div class="pricing-col">
+            <h4>Dry Clean</h4><br>            
+            <h3>230Rs per piece(Male)</h3>
+            <h3>260Rs per piece(Female)</h3><br>
+            </div>
+
+            <div class="pricing-col">
+            <h4>Express Laundry </h4><br>
+            <h3>90Rs per piece(Male)</h3>
+            <h3>80Rs per piece(Female)</h3><br>
+            </div>
+            <br>
+
+            <div class="row">
+            <div class="pricing-col">
+            <h4>Shoes</h4><br>
+            <h3>Cleaning 200Rs per pair</h3><br>
+            <h3>Polish & Cleaning 300Rs per pair</h3><br>
+            </div>
+
+            <div class="pricing-col">
+            <h4>Bag </h4><br>
+            <h3>Small 150Rs per piece</h3><br>
+            <h3>Medium 300Rs per piece</h3><br>
+            <h3>Large 450Rs per piece</h3><br>
+            </div>
+        </section>       
+        
+<!------------------------------How we work --------------------------->
+<section-id="howItWorks" class="section">
+    <h1 class="heading">How We Work</h1>
+<div class="step-container">
+  <div class="step" style="flex: 2;"> <!-- Increased width for "Place your order" box -->
+    <img src="./Images/place-an-order-256.png" alt="Place Order">
+    <h2 style="color: #003057;">Place your order</h2>
+    <p>Order laundry services online, schedule pickup, and we handle the rest. Enjoy convenience from anywhere</p>
+  </div>
+  <div class="step">
+    <img src="./Images/pickup-9-256.png" alt="Laundry Pickup">
+    <h2 style="color: #003057;">Laundry Pickup</h2>
+    <p>Our team will collect your laundry right from your doorstep. Convenient, simple, and hassle-free.</p>
+  </div>
+  <div class="step">
+    <img src="./Images/delivery-1-2-256.png" alt="Laundry Delivery">
+    <h2 style="color: #003057;">Laundry Delivery</h2>
+    <p>Your freshly cleaned clothes will be delivered straight to your doorstep. It's that easy and convenient!</p>
+  </div>
+</div>
+</section-id>
+
+               <!----Footer-->
+      <section class="footer">
+
+        <p>&copy; 2024 LaundryFlow</p>
+
+         <span class="fas fa-phone"> <h5>020 2534 2492</h5> </span> <br>
+         <span class="fas fa-envelope"> <h5>laundry_flow@gmail.com</h5> </span> <br>
+         <span class="fas fa-map-marker-alt"> <h5>24,Opp. Hastakala,<br>Laxmi Road<br>Pune</h5> </span> <br>
+         
+ </section>
+</body>
+</html>

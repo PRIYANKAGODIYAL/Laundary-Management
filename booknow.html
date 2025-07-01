@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Now</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #003057;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav img {
+      width: 70px;
+    }
+
+    .nav-links ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #003057;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .price-info {
+      margin-top: 20px;
+    }
+
+    .footer {
+      background-color: #003057;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="./Images/logo2.png" alt="Logo">
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="booknow.html">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1>Book Now</h1>
+  <form id="bookingForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+
+    <label for="ph_no">Phone Number</label>
+    <input type="tel" id="ph_no" required>
+
+    <label for="address">Address</label>
+    <textarea id="address" required></textarea>
+
+    <label for="pickup_date">Pickup Date</label>
+    <input type="date" id="pickup_date" required>
+
+    <label>Time Slot</label>
+    <input type="radio" name="time_slot" value="9am - 11am" required> 9am - 11am<br>
+    <input type="radio" name="time_slot" value="11am - 1pm"> 11am - 1pm<br>
+    <input type="radio" name="time_slot" value="1pm - 3pm"> 1pm - 3pm<br>
+    <input type="radio" name="time_slot" value="3pm - 5pm"> 3pm - 5pm<br>
+    <input type="radio" name="time_slot" value="5pm - 7pm"> 5pm - 7pm<br>
+
+    <label for="clothes-type">Type of Clothes</label>
+    <input type="text" id="clothes-type">
+
+    <label for="male-quantity">Clothes for Male</label>
+    <input type="number" id="male-quantity" value="0" min="0">
+
+    <label for="female-quantity">Clothes for Female</label>
+    <input type="number" id="female-quantity" value="0" min="0">
+
+    <div id="total-price-male-container" class="price-info"></div>
+    <div id="total-price-female-container" class="price-info"></div>
+    <div id="total-price-container" class="price-info"></div>
+
+    <button type="submit" class="btn">Make Payment</button>
+  </form>
+
+  <div class="footer">
+    <p>&copy; 2024 LaundryFlow</p>
+    <p>Contact: 020 2534 2492 | Email: laundry_flow@gmail.com | Address: 24, Opp. Hastakala, Laxmi Road, Pune</p>
+  </div>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("ph_no").value;
+      const address = document.getElementById("address").value;
+      const pickupDate = document.getElementById("pickup_date").value;
+      const timeSlot = document.querySelector('input[name="time_slot"]:checked').value;
+      const clothesType = document.getElementById("clothes-type").value;
+      const maleQty = parseInt(document.getElementById("male-quantity").value);
+      const femaleQty = parseInt(document.getElementById("female-quantity").value);
+
+      const priceMale = 50;
+      const priceFemale = 60;
+      const totalMale = maleQty * priceMale;
+      const totalFemale = femaleQty * priceFemale;
+      const total = totalMale + totalFemale;
+
+      document.getElementById("total-price-male-container").innerHTML = `<p>Total Male: ₹${totalMale}</p>`;
+      document.getElementById("total-price-female-container").innerHTML = `<p>Total Female: ₹${totalFemale}</p>`;
+      document.getElementById("total-price-container").innerHTML = `<p><strong>Total: ₹${total}</strong></p>`;
+
+      const customer = { name, email, phone, address };
+      const order = {
+        email,
+        date_ordered: pickupDate,
+        time_slot: timeSlot,
+        type_of_clothes: clothesType,
+        male_clothes: maleQty,
+        female_clothes: femaleQty,
+        services_requested: "Wash and Fold"
+      };
+
+      fetch("http://localhost:3000/submit-customer-details", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(customer)
+      });
+
+      fetch("http://localhost:3000/submit-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order)
+      }).then(() => {
+        alert("Booking successful! Redirecting to payment...");
+        setTimeout(() => {
+          window.location.href = "payment.html";
+        }, 2000);
+      }).catch((err) => {
+        console.error("Booking failed", err);
+        alert("Booking failed!");
+      });
+    });
+  </script>
+</body>
+</html>

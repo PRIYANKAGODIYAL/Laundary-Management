@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmed - LaundryFlow</title>
+  <script src="https://kit.fontawesome.com/3e7876803c.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eaf6f6;
+    }
+
+    nav {
+      background-color: #003057;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    nav img {
+      width: 70px;
+    }
+
+    .nav-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .nav-links ul li {
+      margin: 0 10px;
+    }
+
+    .nav-links ul li a {
+      text-decoration: none;
+      color: #fcfcff;
+      font-size: 18px;
+    }
+
+    .confirmation-container {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .confirmation-container h1 {
+      font-size: 40px;
+      color: #003057;
+      margin-bottom: 20px;
+    }
+
+    .confirmation-container p {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .confirmation-container i {
+      font-size: 60px;
+      color: #4caf50;
+      margin-bottom: 20px;
+    }
+
+    .btn-home {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #003057;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .btn-home:hover {
+      background-color: #005a99;
+    }
+
+    .footer {
+      background-color: #003057;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer p, .footer h5 {
+      font-size: 14px;
+      margin: 5px;
+    }
+
+    .footer .fas {
+      margin-right: 8px;
+    }
+
+    #order-summary {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    #order-summary h2 {
+      color: #003057;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    #order-summary p {
+      font-size: 18px;
+      color: #222;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="./Images/logo2.png" alt="Logo" />
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="pricing.html">PRICING</a></li>
+        <li><a href="booknow.html">BOOK NOW</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="confirmation-container">
+    <i class="fas fa-check-circle"></i>
+    <h1>Thank You!</h1>
+    <p>Your payment was successful and your order has been confirmed.</p>
+
+    <div id="order-summary">
+      <h2>Order Summary</h2>
+      <p><strong>Name:</strong> <span id="summary-name">--</span></p>
+      <p><strong>Email:</strong> <span id="summary-email">--</span></p>
+      <p><strong>Pickup Date:</strong> <span id="summary-date">--</span></p>
+      <p><strong>Time Slot:</strong> <span id="summary-slot">--</span></p>
+      <p><strong>Total Paid:</strong> ₹<span id="summary-amount">--</span></p>
+    </div>
+
+    <br />
+    <a class="btn-home" href="index.html">Return to Home</a>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 LaundryFlow</p>
+    <p><i class="fas fa-phone"></i> 020 2534 2492</p>
+    <p><i class="fas fa-envelope"></i> laundry_flow@gmail.com</p>
+    <p><i class="fas fa-map-marker-alt"></i> 24, Opp. Hastakala, Laxmi Road, Pune</p>
+  </footer>
+
+  <script>
+    // Load summary from localStorage
+    document.getElementById('summary-name').textContent = localStorage.getItem('summary_name') || '--';
+    document.getElementById('summary-email').textContent = localStorage.getItem('summary_email') || '--';
+    document.getElementById('summary-date').textContent = localStorage.getItem('summary_date') || '--';
+    document.getElementById('summary-slot').textContent = localStorage.getItem('summary_slot') || '--';
+    document.getElementById('summary-amount').textContent = localStorage.getItem('summary_amount') || '--';
+  </script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3e7876803c.js" crossorigin="anonymous"></script>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+     }
+
+.header{
+      min-height:100vh;
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      position: relative;     
+    }
+
+nav{
+    background-color: #003057;   
+    display: flex;
+    padding: 0% 2%;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+  nav img{
+    width: 70px;
+    position:relative;
+    margin-left: 2px;
+    margin-top: 2px;
+    margin-bottom: 1px;    
+  }
+
+  .nav-links{
+      flex: 1;
+      text-align: right;
+    }
+      .nav-links ul li{
+            list-style:none;
+            display: inline-block;
+            padding: 4px 6px;
+            position: relative;           
+      }
+        .nav-links ul li a{
+          font-size: 20px;
+          color:#fcfcff;
+          text-decoration:none;            
+        }
+         .nav-links ul li::after{
+            content:"";
+            width: 4%;
+            height: 5px;
+            background: #f3ac5b;
+            display: block;
+            margin:auto;
+            transition: 0.5s;
+         }
+           .nav-links ul li:hover::after{
+            width: 100%;            
+           }
+
+        .mr {
+          width: 90%;
+          margin: auto;
+          text-align: center;
+          padding-top: 50px;                     
+        }
+        .services-col{
+            flex-basis: 30%;
+            border-radius: 20px;
+            margin-bottom: 1%;
+            text-align: center;
+        }
+        .services-col img{
+            width: 60%;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }      
+         h1{
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom:0%;
+            text-align: center;
+            color: #003057;
+        }
+         p{
+            color: #777;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px; 
+            padding:10px;
+            text-align: center;
+        }
+                    
+        /*-------------.row is common for services and branches----------------*/
+        .row{
+            margin-top:3%;
+            display: flex;
+            justify-content: space-between;                                              
+        }                        
+                           
+        @media(max-width:700px){
+            .row{
+                flex-direction: column;
+                }
+        }
+        /*----footer-------*/
+        .footer {
+  width: 100%;
+  padding: 0px;
+  min-height: 10vh;
+  background-color: #003057;
+  background-position: center;
+  background-size: cover;
+}
+
+.footer p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  padding: 10px;
+  text-align: center;
+}
+
+.footer h5 {
+  margin-bottom: 1px;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+  text-align: left;
+  display: inline-flex;
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+.icons .fas{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.fa-phone{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.fa-envelope{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+  position: relative;
+  top: -7px;
+}
+
+.fa-map-marker-alt{
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+  top: -7px;
+}
+    </style>
+</head>
+<body>
+      <section class="header">
+        <nav>
+            <a><img src="./Images/logo2.png"></a>
+        <div class="nav-links" id="navLinks">
+            <!--<i class="fa fa-times" onclick="hiddenMenu()"></i> -->
+
+        <ul>
+            <li><a href="Index.html">HOME</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="pricing.html">PRICING</a></li>
+            <li><a href="booknow.html">BOOK NOW</a></li>                
+        </ul>
+        </div>
+        <!-- <i class="fa fa-bars" onclick="hiddenMenu()"></i> -->
+
+        </nav>
+            
+<!------Services------>
+<section id="services" class="mr">
+  <h1>Our Services</h1>
+  <p>Efficient laundry services tailored to your needs</p>
+   <div class="row">
+    <div class="services-col">
+      <fieldset>
+        <a href="booknow.html?service=washfold">
+          <img src="./Images/Folding.jpg.jpg">
+        </a>
+      <h3>Wash & Fold</h3>
+      <p> Our Wash & Fold service is perfect for your everyday clothes. We carefully wash, dry, 
+        and fold your garments for a fresh and neat appearance.
+      </p>
+    </fieldset>
+    </div>
+    <div class="services-col">
+      <fieldset>
+        <a href="booknow.html?service=washiron">
+          <img src="./Images/iron.jpg">
+        </a>
+      <h3>Wash & Iron</h3>
+      <p> Our Wash & Iron service ensures your clothes are not only clean but also wrinkle-free. 
+        Ideal for business attire and special occasions.
+      </p>
+    </fieldset>
+    </div>
+    <div class="services-col">
+      <fieldset>
+        <a href="booknow.html?service=dryclean">
+          <img src="./Images/dryclean.jpg">
+        </a>
+      <h3>Dry Clean</h3>
+      <p> Our Dry Clean service is perfect for delicate garments and fabrics that require special care. 
+        We use eco-friendly solvents to clean your items gently.
+      </p>
+    </fieldset>
+    </div>
+  </div>
+    <div class="row">
+    <div class="services-col">
+      <fieldset>
+        <a href="booknow.html?service=expresslaundry">
+          <img src="./Images/Expresslaundry.jpg">
+        </a>
+      <h3>Express Laundry</h3>
+      <p> Need your clothes cleaned quickly? Our Express Laundry service ensures your 
+        garments are cleaned and ready for pickup within a short time frame.
+      </p>
+      </fieldset>
+    </div>
+    <div class="services-col">
+      <fieldset>
+        <a href="booknow1.html?service=baglaundry">
+          <img src="./Images/bag.png">
+        </a>
+      <h3>Bag Laundry</h3>
+      <p> Our Bag Laundry service allows you to drop off a bag of laundry and have it 
+          cleaned and folded for a convenient and time-saving solution.
+      </p>
+    </fieldset>
+    </div>
+    <div class="services-col">
+      <fieldset>
+        <a href="booknow2.html?service=shoelaundry">
+          <img src="./Images/shoe.jpg">
+        </a>
+      <h3>Shoe Laundry</h3>
+      <p> Our Shoe Laundry service cleans and conditions your shoes, restoring them to 
+        their original appearance. We handle all types of footwear with care.
+      </p>
+    </fieldset>
+    </div>
+   </div>
+</section>
+         <!----Footer-->
+         <section class="footer">
+
+          <p>&copy; 2024 LaundryFlow</p>
+
+           <span class="fas fa-phone"> <h5>020 2534 2492</h5> </span> <br>
+           <span class="fas fa-envelope"> <h5>laundry_flow@gmail.com</h5> </span> <br>
+           <span class="fas fa-map-marker-alt"> <h5>24,Opp. Hastakala,<br>Laxmi Road<br>Pune</h5> </span> <br>
+           
+   </section>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #28778b;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      color: white;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .secondary-btn {
+      background-color: #dc3545;
+    }
+
+    .secondary-btn:hover {
+      background-color: #b52a37;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 15px;
+      color: white;
+      font-weight: bold;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Login</h1>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+      </div>
+      <button type="submit" id="loginBtn">Login</button>
+      <button type="button" class="secondary-btn" onclick="resetForm()">Reset</button>
+    </form>
+    <div class="status" id="statusMsg"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const statusMsg = document.getElementById('statusMsg');
+    const loginBtn = document.getElementById('loginBtn');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      statusMsg.textContent = "🔄 Logging in...";
+      loginBtn.disabled = true;
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      fetch('http://localhost:3000/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      })
+      .then(response => response.json().then(data => ({ status: response.status, body: data })))
+      .then(({ status, body }) => {
+        loginBtn.disabled = false;
+
+        if (status === 200 && body.message === 'Login successful') {
+          statusMsg.textContent = "✅ Login successful!";
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1000);
+        } else if (status === 401) {
+          statusMsg.textContent = "❌ Invalid credentials";
+        } else {
+          statusMsg.textContent = "❌ Login failed: " + (body.message || "Unknown error");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        statusMsg.textContent = "❌ Login failed. Please try again.";
+        loginBtn.disabled = false;
+      });
+    });
+
+    function resetForm() {
+      form.reset();
+      statusMsg.textContent = "";
+    }
+  </script>
+</body>
+</html>
